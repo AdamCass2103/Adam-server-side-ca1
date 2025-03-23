@@ -10,24 +10,21 @@ class PlayerSeeder extends Seeder
     public function run()
     {
         Player::create([
-            'name' => 'John O\'Reilly',
+            'name' => "John O'Reilly",
             'age' => 24,
             'position' => 'Forward',
-            'user_id' => 1
+            'goals' => 10,
+            'assists' => 5,
+            'user_id' => 1, // Make sure this user exists!
         ]);
 
         Player::create([
-            'name' => 'Mick Donnelly',
+            'name' => "Paul Murphy",
             'age' => 28,
             'position' => 'Midfielder',
-            'user_id' => 1
-        ]);
-
-        Player::create([
-            'name' => 'Brian Casey',
-            'age' => 22,
-            'position' => 'Goalkeeper',
-            'user_id' => 1
+            'goals' => 4,
+            'assists' => 8,
+            'user_id' => 1,
         ]);
     }
 }
