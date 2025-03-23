@@ -21,9 +21,9 @@ class CreatePlayersTable extends Migration
         $table->integer('possessions_won')->default(0);
         $table->foreignId('user_id')->constrained()->onDelete('cascade');
         $table->timestamps();
-    );
+    });
 }
-    }
+
 
     public function down()
     {
