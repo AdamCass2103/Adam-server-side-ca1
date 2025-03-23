@@ -6,13 +6,15 @@
     <title>Player Stats</title>
 </head>
 <body>
-    <h1>Player Stats</h1>
-    <a href="{{ route('players.create') }}">Add New Player</a>
+<h1>Dreadnots GAA Player Stats</h1>
+<a href="{{ route('players.create') }}">Add New Player</a>
 
-    <ul>
-        @foreach ($players as $player)
-            <li>{{ $player->name }} - Age: {{ $player->age }} - Position: {{ $player->position }}</li>
-        @endforeach
-    </ul>
+<ul>
+    @foreach ($players as $player)
+        <li>
+            {{ $player->name }} | Age: {{ $player->age }} | Position: {{ $player->position }}
+        </li>
+    @endforeach
+</ul>
 </body>
 </html>
