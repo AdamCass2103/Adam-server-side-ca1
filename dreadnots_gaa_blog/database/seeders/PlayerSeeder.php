@@ -13,27 +13,36 @@ class PlayerSeeder extends Seeder
             'name' => 'John O\'Reilly',
             'age' => 24,
             'position' => 'Forward',
-            'goals' => 12,
-            'assists' => 7,
-            'user_id' => 1, // Link to John Matthews
+            'goals' => 5,
+            'points' => 15,
+            'turnovers' => 3,
+            'possessions_lost' => 2,
+            'possessions_won' => 10,
+            'user_id' => 1,
         ]);
 
         Player::create([
             'name' => 'Liam O\'Connor',
             'age' => 27,
             'position' => 'Midfielder',
-            'goals' => 9,
-            'assists' => 10,
-            'user_id' => 2, // Link to Sarah O'Connor
+            'goals' => 2,
+            'points' => 8,
+            'turnovers' => 5,
+            'possessions_lost' => 4,
+            'possessions_won' => 12,
+            'user_id' => 2,
         ]);
 
         Player::create([
             'name' => 'David Byrne',
             'age' => 22,
             'position' => 'Defender',
-            'goals' => 3,
-            'assists' => 5,
-            'user_id' => 3, // Link to Liam Dempsey
+            'goals' => 0,
+            'points' => 3,
+            'turnovers' => 1,
+            'possessions_lost' => 1,
+            'possessions_won' => 15,
+            'user_id' => 3,
         ]);
     }
 }
