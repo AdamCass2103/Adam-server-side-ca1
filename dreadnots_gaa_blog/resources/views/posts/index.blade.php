@@ -1,12 +1,20 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dreadnots GAA Blog</title>
+</head>
+<body>
+    <h1>Dreadnots GAA Blog</h1>
+    <a href="{{ route('posts.create') }}">Create New Post</a>
 
-@section('content')
-    <h2 class="text-2xl font-bold mb-4">Latest Blog Posts</h2>
-
-    @foreach ($posts as $post)
-        <div class="mb-4 p-4 bg-white shadow rounded">
-            <h3 class="text-lg font-semibold">{{ $post->title }}</h3>
-            <p>{{ $post->body }}</p>
-        </div>
-    @endforeach
-@endsection
+    <ul>
+        @foreach ($posts as $post)
+            <li>
+                <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a>
+            </li>
+        @endforeach
+    </ul>
+</body>
+</html>
