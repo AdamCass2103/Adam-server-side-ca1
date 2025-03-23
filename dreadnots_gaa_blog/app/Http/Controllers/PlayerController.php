@@ -1,5 +1,9 @@
-use App\Models\Player;
+<?php
+
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+use App\Models\Player;
 
 class PlayerController extends Controller
 {
@@ -18,12 +22,41 @@ class PlayerController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'age' => 'required',
-            'position' => 'required',
+            'age' => 'required|numeric',
+            'position' => 'required'
         ]);
 
         Player::create($request->all());
 
+        return redirect()->route('players.index');
+    }
+
+    public function show(Player $player)
+    {
+        return view('players.show', compact('player'));
+    }
+
+    public function edit(Player $player)
+    {
+        return view('players.edit', compact('player'));
+    }
+
+    public function update(Request $request, Player $player)
+    {
+        $request->validate([
+            'name' => 'required',
+            'age' => 'required|numeric',
+            'position' => 'required'
+        ]);
+
+        $player->update($request->all());
+
+        return redirect()->route('players.index');
+    }
+
+    public function destroy(Player $player)
+    {
+        $player->delete();
         return redirect()->route('players.index');
     }
 }

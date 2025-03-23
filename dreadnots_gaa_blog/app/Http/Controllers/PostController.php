@@ -1,7 +1,9 @@
 <?php
 
-use App\Models\Post;
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -20,7 +22,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'content' => 'required',
+            'content' => 'required'
         ]);
 
         Post::create($request->all());
@@ -42,7 +44,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'content' => 'required',
+            'content' => 'required'
         ]);
 
         $post->update($request->all());
@@ -53,7 +55,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-
         return redirect()->route('posts.index');
     }
 }
