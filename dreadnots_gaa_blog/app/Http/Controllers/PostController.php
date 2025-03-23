@@ -8,10 +8,10 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function index()
-    {
-        $posts = Post::all();
-        return view('posts.index', compact('posts'));
-    }
+{
+    $posts = Post::paginate(10); // Paginate posts, 10 per page
+    return view('posts.index', compact('posts'));
+}
 
     public function create()
     {

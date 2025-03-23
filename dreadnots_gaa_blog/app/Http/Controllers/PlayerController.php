@@ -8,10 +8,10 @@ use App\Models\Player;
 class PlayerController extends Controller
 {
     public function index()
-    {
-        $players = Player::all();
-        return view('players.index', compact('players'));
-    }
+{
+    $players = Player::paginate(10); // Paginate players, 10 per page
+    return view('players.index', compact('players'));
+}
 
     public function create()
     {
