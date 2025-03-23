@@ -7,17 +7,20 @@ use App\Models\Player;
 
 class PlayerController extends Controller
 {
+    // Show all players
     public function index()
-{
-    $players = Player::paginate(10); // Paginate players, 10 per page
-    return view('players.index', compact('players'));
-}
+    {
+        $players = Player::all();
+        return view('players.index', compact('players'));
+    }
 
+    // Show form to create a new player
     public function create()
     {
         return view('players.create');
     }
 
+    // Store a new player in the database
     public function store(Request $request)
     {
         $request->validate([
@@ -31,31 +34,24 @@ class PlayerController extends Controller
             'possessions_won' => 'required|numeric',
         ]);
 
-        Player::create([
-            'name' => $request->name,
-            'age' => $request->age,
-            'position' => $request->position,
-            'goals' => $request->goals,
-            'points' => $request->points,
-            'turnovers' => $request->turnovers,
-            'possessions_lost' => $request->possessions_lost,
-            'possessions_won' => $request->possessions_won,
-            'user_id' => $request->user_id,  // Assuming user_id is passed in the request
-        ]);
+        Player::create($request->all());
 
         return redirect()->route('players.index');
     }
 
+    // Show a single player
     public function show(Player $player)
     {
         return view('players.show', compact('player'));
     }
 
+    // Show form to edit a player
     public function edit(Player $player)
     {
         return view('players.edit', compact('player'));
     }
 
+    // Update a player in the database
     public function update(Request $request, Player $player)
     {
         $request->validate([
@@ -69,20 +65,12 @@ class PlayerController extends Controller
             'possessions_won' => 'required|numeric',
         ]);
 
-        $player->update([
-            'name' => $request->name,
-            'age' => $request->age,
-            'position' => $request->position,
-            'goals' => $request->goals,
-            'points' => $request->points,
-            'turnovers' => $request->turnovers,
-            'possessions_lost' => $request->possessions_lost,
-            'possessions_won' => $request->possessions_won,
-        ]);
+        $player->update($request->all());
 
         return redirect()->route('players.index');
     }
 
+    // Delete a player
     public function destroy(Player $player)
     {
         $player->delete();
