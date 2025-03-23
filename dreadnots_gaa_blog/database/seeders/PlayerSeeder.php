@@ -4,14 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Player;
-use Carbon\Carbon;
 
 class PlayerSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
         Player::create([
             'name' => 'John O\'Reilly',
@@ -19,31 +15,25 @@ class PlayerSeeder extends Seeder
             'position' => 'Forward',
             'goals' => 12,
             'assists' => 7,
-            'user_id' => 1, // Make sure user with ID 1 exists
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'user_id' => 1, // Link to John Matthews
         ]);
 
         Player::create([
-            'name' => 'Paul Murphy',
-            'age' => 28,
+            'name' => 'Liam O\'Connor',
+            'age' => 27,
             'position' => 'Midfielder',
-            'goals' => 5,
-            'assists' => 14,
-            'user_id' => 1,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'goals' => 9,
+            'assists' => 10,
+            'user_id' => 2, // Link to Sarah O'Connor
         ]);
 
         Player::create([
             'name' => 'David Byrne',
             'age' => 22,
-            'position' => 'Goalkeeper',
-            'goals' => 0,
-            'assists' => 1,
-            'user_id' => 1,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'position' => 'Defender',
+            'goals' => 3,
+            'assists' => 5,
+            'user_id' => 3, // Link to Liam Dempsey
         ]);
     }
 }
