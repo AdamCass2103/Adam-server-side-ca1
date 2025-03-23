@@ -23,10 +23,25 @@ class PlayerController extends Controller
         $request->validate([
             'name' => 'required',
             'age' => 'required|numeric',
-            'position' => 'required'
+            'position' => 'required',
+            'goals' => 'required|numeric',
+            'points' => 'required|numeric',
+            'turnovers' => 'required|numeric',
+            'possessions_lost' => 'required|numeric',
+            'possessions_won' => 'required|numeric',
         ]);
 
-        Player::create($request->all());
+        Player::create([
+            'name' => $request->name,
+            'age' => $request->age,
+            'position' => $request->position,
+            'goals' => $request->goals,
+            'points' => $request->points,
+            'turnovers' => $request->turnovers,
+            'possessions_lost' => $request->possessions_lost,
+            'possessions_won' => $request->possessions_won,
+            'user_id' => $request->user_id,  // Assuming user_id is passed in the request
+        ]);
 
         return redirect()->route('players.index');
     }
@@ -46,10 +61,24 @@ class PlayerController extends Controller
         $request->validate([
             'name' => 'required',
             'age' => 'required|numeric',
-            'position' => 'required'
+            'position' => 'required',
+            'goals' => 'required|numeric',
+            'points' => 'required|numeric',
+            'turnovers' => 'required|numeric',
+            'possessions_lost' => 'required|numeric',
+            'possessions_won' => 'required|numeric',
         ]);
 
-        $player->update($request->all());
+        $player->update([
+            'name' => $request->name,
+            'age' => $request->age,
+            'position' => $request->position,
+            'goals' => $request->goals,
+            'points' => $request->points,
+            'turnovers' => $request->turnovers,
+            'possessions_lost' => $request->possessions_lost,
+            'possessions_won' => $request->possessions_won,
+        ]);
 
         return redirect()->route('players.index');
     }
